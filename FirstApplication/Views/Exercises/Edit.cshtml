@@ -1,0 +1,41 @@
+﻿@model FirstApplication.Models.Exercises
+
+@{
+    ViewBag.Title = "Edit";
+}
+@Styles.Render("~/Content/Exercise.css")
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="BigWindow">
+        <h2 id="Caption">Редактирование упражнения</h2>
+        <div class=" SmallWindow">
+            @Html.HiddenFor(model => model.ID_Exercise)
+            <span class="Name">Название</span>
+            @Html.EditorFor(model => model.Name_Exercise)
+            <br />
+            <span class="Description" style="font-weight:bold; text-align:center">Описание</span>
+            @Html.TextAreaFor(model => model.Description_Exercise)
+            <br />
+            <span class="Description" style=" font-weight:bold">Длительность</span>
+            @Html.EditorFor(model => model.Duration_Exercise)
+            <br />
+            <span class="Description" style=" font-weight:bold">Тип</span>
+            @Html.DropDownList("Type_Exercise")
+            <br />
+
+            <span class="Description" style=" font-weight:bold">Премиум - тренировка</span>
+            @Html.DropDownList("Premium_Work_Number")
+            <br />
+
+        </div>
+        <input class="btnEditAndBack BtnLink" type="submit" value="Изменить" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    </div>
+}
+
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3fdaa0cb4f7443d5a79ba0a1d4cbfcf0" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Exercises" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.FavouritePosts" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Posts" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Premium_Works" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Types_Workout" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.User_Progress" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Users" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.WorkoutElements" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartWorkouts_newModel.Workouts" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_Exercises_Premium_Works" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_Exercises_Types_Workout" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_WorkoutElements_Exercises" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_FavouritePosts_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_FavouritePosts_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_Users_Premium_Works" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_Workouts_Premium_Works" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_Workouts_Types_Workout" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_User_Progress_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartWorkouts_newModel.FK_WorkoutElements_Workouts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

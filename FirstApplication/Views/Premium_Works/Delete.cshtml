@@ -1,0 +1,31 @@
+﻿@model FirstApplication.Models.Premium_Works
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Styles.Render("~/Content/Subscription.css")
+
+<div class="BigWindow">
+    <div class=" SmallWindow">
+
+        <span class="Name"> Название </span>
+        <span class="Description"> @Html.DisplayFor(model => model.Name_Premium_Work) </span>
+        <br />
+        <span class="Name"> Описание </span>
+        <span class="Description">  @Html.DisplayFor(model => model.Description_Premium_Work) </span>
+        <br />
+        <span class="Name">Цена </span>
+        <span class=" Description">@Html.DisplayFor(model => model.Price_Premium_Work) руб</span>
+        <br />
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Удалить" class="btnEditAndBack" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    }
+
+</div>
+

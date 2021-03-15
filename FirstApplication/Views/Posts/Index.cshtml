@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FirstApplication.Models.Posts>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/ButtonAdd.css")
+@Styles.Render("~/Content/Posts.css")
+
+<table class="tableForPost">
+    <tr class="tableTitle">
+        <th colspan="4">Таблица - новости</th>
+    </tr>
+    <tr class="HeadRowTableForPost">
+        <th>
+            Название
+        </th>
+
+        <th>
+            Дата добавления
+
+        </th>
+        <th>
+            <span class="btn">@Html.ActionLink("Добавить новость", "Create", null, new { @class = "BtnLink" })</span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var shortDate = item.DateAdded.ToString();
+        shortDate = shortDate.Remove(11);
+
+        <tr class="rowSelect">
+            <td id="FirstColumn">
+
+                @Html.DisplayFor(modelItem => item.NamePost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => shortDate)
+            </td>
+            <td>
+                <a href='@Url.Action("Details",
+                   new { id = item.ID_Post })'
+                   class="fas fa-eye">
+                </a>
+                <a href='@Url.Action("Edit",
+                   new { id = item.ID_Post })'
+                   class="fas fa-edit">
+                </a>
+                <a href='@Url.Action("Delete",
+                   new { id = item.ID_Post })'
+                   class="fas fa-trash">
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

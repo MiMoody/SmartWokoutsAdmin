@@ -1,0 +1,30 @@
+﻿span.btn {
+    display: block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding:0,1em,0,1em ;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+    width: 90%;
+    margin:auto;
+
+}
+.BtnLink {
+    text-decoration: none;
+    color: white;
+}
+
+
+    span.btn:hover {
+        background: rgba(255,255,255,.2);
+    }
+
+    span.btn:active {
+        background: white;
+    }
+
+

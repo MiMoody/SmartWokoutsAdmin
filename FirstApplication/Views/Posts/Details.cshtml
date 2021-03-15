@@ -1,0 +1,27 @@
+﻿@model FirstApplication.Models.Posts
+
+@{
+    ViewBag.Title = "Details";
+}
+@Styles.Render("~/Content/Posts.css")
+
+
+<div class="BigWindow">
+    <div class=" SmallWindow">
+
+        <span id="Name">@Html.DisplayFor(model => model.NamePost)</span>
+        <br />
+        <span id="Description"> @Html.DisplayFor(model => model.ContentPost)</span>
+        <br />
+        <span id="DateAdded">@Html.DisplayFor(model => model.DateAdded).ToString().Remove(11)</span>
+        <br />
+        @if (Model.PicturePath != null)
+        {
+            <img src="~/Content/Images/@Html.DisplayFor(model=>model.PicturePath)" />
+
+        }
+        <span class="btnEditAndBack">@Html.ActionLink("Редактировать новость", "Edit", new { id = Model.ID_Post }, new { @class = "BtnLink" })</span>
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+
+    </div>
+</div>

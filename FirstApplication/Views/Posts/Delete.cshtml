@@ -1,0 +1,35 @@
+﻿@model FirstApplication.Models.Posts
+
+@{
+    ViewBag.Title = "Delete";
+}
+@Styles.Render("~/Content/Posts.css")
+
+<div class="BigWindow">
+    <div class=" SmallWindow">
+
+        <span id="Name">@Html.DisplayFor(model => model.NamePost)</span>
+        <br />
+        <span id="Description"> @Html.DisplayFor(model => model.ContentPost)</span>
+        <br />
+        <span id="DateAdded">@Html.DisplayFor(model => model.DateAdded).ToString().Remove(11)</span>
+        <br />
+        @if (Model.PicturePath != null)
+        {
+            <img src="~/Content/Images/@Html.DisplayFor(model=>model.PicturePath)" />
+
+        }
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <input type="submit" value="Удалить" class="btnEditAndBack" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+
+    }
+
+</div>
+
+

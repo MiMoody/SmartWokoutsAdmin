@@ -1,0 +1,33 @@
+﻿@model FirstApplication.Models.Posts
+
+@{
+    ViewBag.Title = "Edit";
+}
+@Styles.Render("~/Content/Posts.css")
+
+
+
+@using (Html.BeginForm("Edit", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="BigWindow">
+        <h2 id="Caption">Редактирование записи</h2>
+        <div class=" SmallWindow">
+            @Html.HiddenFor(model => model.ID_Post)
+            <span id="Name">Название</span>
+            @Html.EditorFor(model => model.NamePost)
+            <br />
+            <span id="Description" style="font-weight:bold; text-align:center">Описание</span>
+            @Html.TextAreaFor(model => model.ContentPost)
+            <br />
+            @Html.HiddenFor(model => model.PicturePath)
+            <input id="ForPhoto" type="file" name="Pic" accept="image/jpeg,image/png">
+            <br />
+
+
+        </div>
+        <input class="btnEditAndBack BtnLink" type="submit" value="Изменить" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    </div>
+}

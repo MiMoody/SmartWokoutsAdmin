@@ -1,0 +1,36 @@
+﻿@model FirstApplication.Models.Premium_Works
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@Styles.Render("~/Content/Subscription.css")
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="BigWindow">
+        <h2 id="Caption">Добавление подписки</h2>
+        <div class=" SmallWindow">
+           
+            <span class="Name">Название</span>
+            @Html.EditorFor(model => model.Name_Premium_Work)
+            <br />
+            <span class="Description" style="font-weight:bold; text-align:center">Описание</span>
+            @Html.TextAreaFor(model => model.Description_Premium_Work)
+            <br />
+            <span class="Description" style=" font-weight:bold">Цена</span>
+            @Html.EditorFor(model => model.Price_Premium_Work)
+            <br />
+
+        </div>
+        <input class="btnEditAndBack BtnLink" type="submit" value="Добавить" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    </div>
+
+
+    }
+}

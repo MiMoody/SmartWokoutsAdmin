@@ -1,0 +1,33 @@
+﻿@model FirstApplication.Models.Workouts
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Styles.Render("~/Content/Workouts.css")
+<div class="BigWindow">
+    <div class=" SmallWindow">
+
+        <span class="Name"> Название </span>
+        <span class="Description"> @Html.DisplayFor(model => model.Name_Workout) </span>
+        <br />
+        <span class="Name"> Описание </span>
+        <span class="Description">  @Html.DisplayFor(model => model.Description_Workout) </span>
+        <br />
+        <span class="Name">Премиум-тренировка </span>
+        <span class=" Description">@Html.DisplayFor(model => model.Premium_Works.Name_Premium_Work)</span>
+        <br />
+        <span class="Name">Тип тренировки </span>
+        <span class=" Description">@Html.DisplayFor(model => model.Types_Workout.Name_Type) </span>
+        <br />
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Удалить" class="btnEditAndBack" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+
+    }
+</div>
+

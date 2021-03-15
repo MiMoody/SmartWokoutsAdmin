@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FirstApplication.Models.Premium_Works>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/ButtonAdd.css")
+@Styles.Render("~/Content/Subscription.css")
+
+
+
+<p>
+
+</p>
+<table class="tableForSubscription">
+    <caption>Таблица-подписок</caption>
+    <tr class="HeadRowTableForSubscription">
+        <th>
+            Название
+        </th>
+
+        <th>
+            Цена, руб
+        </th>
+        <th>
+            <span class="btn"> @Html.ActionLink("Добавить подписку", "Create", null, new { @class = "BtnLink" })</span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="rowSelect">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_Premium_Work)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price_Premium_Work)
+            </td>
+            <td>
+                <a href='@Url.Action("Details",
+                   new { id = item.Number_Premium_Work })'
+                   class="fas fa-eye">
+                </a>
+                <a href='@Url.Action("Edit",
+                   new { id = item.Number_Premium_Work })'
+                   class="fas fa-edit">
+                </a>
+                <a href='@Url.Action("Delete",
+                   new { id = item.Number_Premium_Work })'
+                   class="fas fa-trash">
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model FirstApplication.Models.Workouts
+
+@{
+    ViewBag.Title = "Create";
+}
+@Styles.Render("~/Content/Workouts.css")
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="BigWindow">
+        <h2 id="Caption">Добавление тренировки</h2>
+        <div class=" SmallWindow">
+
+            <span class="Name">Название</span>
+            @Html.EditorFor(model => model.Name_Workout)
+            <br />
+            <span class="Description" style="font-weight:bold; text-align:center">Описание</span>
+            @Html.TextAreaFor(model => model.Description_Workout)
+            <br />
+            <span class="Description" style=" font-weight:bold">Премиум - тренировка</span>
+            @Html.DropDownList("Number_Premium_Workout")
+            <br />
+            <span class="Description" style=" font-weight:bold">Тип</span>
+            @Html.DropDownList("Type_Workout")
+            <br />
+
+        </div>
+        <input class="btnEditAndBack BtnLink" type="submit" value="Добавить" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    </div>
+}
+
+

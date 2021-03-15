@@ -1,0 +1,37 @@
+﻿@model IEnumerable<FirstApplication.Models.WorkoutElements>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/ButtonAdd.css")
+@Styles.Render("~/Content/Workouts.css")
+
+
+<table class="tableForWorkouts">
+    <tr class="HeadRowTableForWorkouts">
+        <th>
+            Название
+        </th>
+        <th style="width:25%">
+            <button type="submit" class="AddExercise" id="BtnAddExercise"  onclick="Add()">Добавить упражнение</button>
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr class="rowSelect">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exercises.Name_Exercise)
+                </td>
+                <td>
+                    <button class="DeleteExercise" id="@item.ID_Exercises" onclick="Delete(this)">Удалить</button>
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+
+

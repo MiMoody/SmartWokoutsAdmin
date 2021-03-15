@@ -1,0 +1,39 @@
+﻿@model FirstApplication.Models.Posts
+
+@{
+    ViewBag.Title = "Create";
+}
+@Styles.Render("~/Content/Posts.css")
+
+
+
+@using (Html.BeginForm("Create", "Posts",FormMethod.Post,new {enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="BigWindow">
+        <h2 id="Caption">Добавление записи</h2>
+        <div class=" SmallWindow">
+
+            <span id="Name">Название</span>
+            @Html.EditorFor(model => model.NamePost)
+            <br />
+            <span id="Description" style="font-weight:bold; text-align:center">Описание</span>
+            @Html.TextAreaFor(model => model.ContentPost)
+            <br />
+           
+            <span id="Photo" style="font-weight:bold; text-align:center">Картинка</span>
+            <input id="ForPhoto" type="file" name="Pic" />
+            <br />
+
+        </div>
+        <input class="btnEditAndBack BtnLink" type="submit" value="Добавить" />
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+    </div>
+
+    @*@Html.LabelFor(model => model.DateAdded,"Дата добавления", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        @Html.EditorFor(model => model.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.DateAdded, "", new { @class = "text-danger" })*@
+
+}

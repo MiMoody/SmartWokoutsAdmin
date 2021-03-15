@@ -1,0 +1,24 @@
+﻿@model FirstApplication.Models.Premium_Works
+
+@{
+    ViewBag.Title = "Details";
+}
+@Styles.Render("~/Content/Subscription.css")
+
+<div class="BigWindow">
+    <div class=" SmallWindow">
+
+        <span class="Name"> Название </span>
+        <span class="Description"> @Html.DisplayFor(model => model.Name_Premium_Work) </span>
+        <br />
+        <span class="Name"> Описание </span>
+        <span class="Description">  @Html.DisplayFor(model => model.Description_Premium_Work) </span>
+        <br />
+        <span class="Name">Цена </span>
+        <span class=" Description">@Html.DisplayFor(model => model.Price_Premium_Work) руб</span>
+        <br />
+        <span class="btnEditAndBack">@Html.ActionLink("Редактировать подписку", "Edit", new { id = Model.Number_Premium_Work }, new { @class = "BtnLink" })</span>
+        <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
+
+    </div>
+</div>
