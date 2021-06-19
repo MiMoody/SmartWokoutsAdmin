@@ -22,6 +22,13 @@
         <span class="Name">Тип тренировки </span>
         <span class=" Description">@Html.DisplayFor(model => model.Types_Workout.Name_Type) </span>
         <br />
+        @if (Model.PicturePath != null)
+        {
+            <img src="~/Content/Images/ExerciseGifs/@Html.DisplayFor(model=>model.PicturePath)" style=" display:block; margin:0 auto;"/>
+
+        }
+        <br />
+
         <span class="btnEditAndBack">@Html.ActionLink("Редактировать упражнение", "Edit", new { id = Model.ID_Exercise }, new { @class = "BtnLink" })</span>
         <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>
 

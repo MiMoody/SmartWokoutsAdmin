@@ -17,7 +17,7 @@
         <br />
         @if (Model.PicturePath != null)
         {
-            <img src="~/Content/Images/@Html.DisplayFor(model=>model.PicturePath)" />
+            <img src="~/Content/Images/PostImages/@Html.DisplayFor(model=>model.PicturePath)" />
 
         }
         <span class="btnEditAndBack">@Html.ActionLink("Редактировать новость", "Edit", new { id = Model.ID_Post }, new { @class = "BtnLink" })</span>

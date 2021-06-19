@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -44,15 +45,28 @@ namespace FirstApplication.Controllers
             return View();
         }
 
-        // POST: Exercises/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        public string getFileExtension(string fileName) // Получение типа фотографии
+        {
+            return fileName.Substring(fileName.LastIndexOf(".") + 1);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_Exercise,Name_Exercise,Description_Exercise,Duration_Exercise,Type_Exercise,Premium_Work_Number")] Exercises exercises)
+        public ActionResult Create( Exercises exercises, HttpPostedFileBase Pic)
         {
             if (ModelState.IsValid)
             {
+                string fileName = null;
+                if (Pic != null)
+                {
+                    fileName = Path.GetFileName(Pic.FileName);
+                    string extensionImage = getFileExtension(fileName);
+                    fileName = Guid.NewGuid() + "." + extensionImage;
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/ExerciseGifs"), fileName);
+                    //var path = Path.Combine("https://disk.yandex.ru/d/DXlvv0vSsvgswQ?w=1", fileName);
+                    Pic.SaveAs(path);
+                }
+                exercises.PicturePath = fileName;
                 db.Exercises.Add(exercises);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,10 +99,28 @@ namespace FirstApplication.Controllers
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_Exercise,Name_Exercise,Description_Exercise,Duration_Exercise,Type_Exercise,Premium_Work_Number")] Exercises exercises)
-        {
+        public ActionResult Edit(Exercises exercises, HttpPostedFileBase Pic)
+            {
             if (ModelState.IsValid)
             {
+                string fileName = null;
+                if (Pic != null)
+                {
+                    fileName = Path.GetFileName(Pic.FileName);
+                    string extensionImage = getFileExtension(fileName);
+                    fileName = Guid.NewGuid() + "." + extensionImage;
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/ExerciseGifs"), fileName);
+                    //var path = Path.Combine("https://disk.yandex.ru/d/DXlvv0vSsvgswQ?w=1", fileName);
+                    Pic.SaveAs(path);
+                    exercises.PicturePath = fileName;
+                }
+                else
+                {
+                    using (SmartWorkouts_newEntities bd = new SmartWorkouts_newEntities())
+                    {
+                        exercises.PicturePath = bd.Exercises.Where(p => p.ID_Exercise == exercises.ID_Exercise).FirstOrDefault().PicturePath;
+                    }
+                }
                 db.Entry(exercises).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

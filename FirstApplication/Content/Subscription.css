@@ -16,7 +16,16 @@ caption {
     color: white;
     height: 3em;
 }
+#Photo {
+    display: block;
+    font-family: "Comfortaa", sans-serif;
+    text-align: justify;
+    line-height: 1.8;
+}
 
+#ForPhoto {
+    outline: none;
+}
 td {
     text-align: center;
     padding: 10px,0,10px,0;
@@ -121,4 +130,23 @@ td {
 
 .btnEditAndBack:active {
     background: #6D6875;
+}
+#GenerateReport {
+    position: absolute;
+    top: 45%;
+    left: 41%;
+    padding: 15px;
+    border-radius: 50px;
+    display: block;
+    color: white;
+    background-color: #B5838D;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    border: 2px solid;
+    transition: 0.2s;
+    width: 15%;
+    cursor:pointer;
+    text-align:center;
 }

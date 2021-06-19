@@ -204,6 +204,7 @@
       <LastGenOutput>ModelSmartWorkouts.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ForHeader.js" />
+    <Content Include="Content\1.pdf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\ForLoadWork.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
@@ -251,7 +252,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\App_LocalResources\" />
-    <Folder Include="Content\Images\" />
+    <Folder Include="Content\Images\ExerciseGifs\" />
+    <Folder Include="Content\Images\PostImages\" />
+    <Folder Include="Content\Images\PremiumWorks\" />
+    <Folder Include="Content\Images\WorkoutImages\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\ModelSmartWorkouts.edmx">

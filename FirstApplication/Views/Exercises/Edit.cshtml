@@ -6,7 +6,7 @@
 @Styles.Render("~/Content/Exercise.css")
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Exercises", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -30,7 +30,9 @@
             <span class="Description" style=" font-weight:bold">Премиум - тренировка</span>
             @Html.DropDownList("Premium_Work_Number")
             <br />
-
+            <span id="Photo" style="font-weight:bold; text-align:center">Картинка</span>
+            <input id="ForPhoto" type="file" name="Pic" />
+            <br />
         </div>
         <input class="btnEditAndBack BtnLink" type="submit" value="Изменить" />
         <span class="btnEditAndBack">@Html.ActionLink("Назад", "Index", null, new { @class = "BtnLink" })</span>

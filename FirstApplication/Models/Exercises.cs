@@ -26,6 +26,7 @@ namespace FirstApplication.Models
         public int Duration_Exercise { get; set; }
         public Nullable<int> Type_Exercise { get; set; }
         public Nullable<int> Premium_Work_Number { get; set; }
+        public string PicturePath { get; set; }
     
         public virtual Premium_Works Premium_Works { get; set; }
         public virtual Types_Workout Types_Workout { get; set; }

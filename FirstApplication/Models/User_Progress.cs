@@ -15,11 +15,10 @@ namespace FirstApplication.Models
     public partial class User_Progress
     {
         public int ID_Progress { get; set; }
-        public decimal User_Wieght { get; set; }
-        public decimal User_Waist { get; set; }
-        public decimal User_Breast { get; set; }
-        public System.DateTime Data_Measurement { get; set; }
         public int User_ID { get; set; }
+        public decimal StartWeight { get; set; }
+        public decimal CurrentWeight { get; set; }
+        public decimal DesiredWeight { get; set; }
     
         public virtual Users Users { get; set; }
     }

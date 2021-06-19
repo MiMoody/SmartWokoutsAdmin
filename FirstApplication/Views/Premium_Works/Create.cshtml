@@ -8,14 +8,14 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Html.BeginForm("Create", "Premium_Works", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
 
     <div class="BigWindow">
         <h2 id="Caption">Добавление подписки</h2>
         <div class=" SmallWindow">
-           
+
             <span class="Name">Название</span>
             @Html.EditorFor(model => model.Name_Premium_Work)
             <br />
@@ -24,6 +24,9 @@
             <br />
             <span class="Description" style=" font-weight:bold">Цена</span>
             @Html.EditorFor(model => model.Price_Premium_Work)
+            <br />
+            <span id="Photo" style="font-weight:bold; text-align:center">Картинка</span>
+            <input id="ForPhoto" type="file" name="Pic" />
             <br />
 
         </div>

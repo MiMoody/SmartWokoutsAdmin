@@ -94,6 +94,16 @@ td {
     text-align: center;
 }
 
+#Photo {
+    display: block;
+    font-family: "Comfortaa", sans-serif;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+#ForPhoto {
+    outline: none;
+}
 .Description {
     display: block;
     font-family: "Comfortaa", sans-serif;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,10 +15,27 @@ namespace FirstApplication.Controllers
     {
         private SmartWorkouts_newEntities db = new SmartWorkouts_newEntities();
 
+        public string getFileExtension(string fileName) // Получение типа фотографии
+        {
+            return fileName.Substring(fileName.LastIndexOf(".") + 1);
+        }
         // GET: Premium_Works
         public ActionResult Index()
         {
             return View(db.Premium_Works.ToList());
+        }
+
+        public ActionResult CreatePdf()
+        {
+            string filePath = Server.MapPath("~/Content/1.pdf");
+            string contentType = "application/pdf";
+
+            ////Parameters to file are
+            ////1. The File Path on the File Server
+            ////2. The content type MIME type
+            ////3. The parameter for the file save by the browser
+            //var a = File(filePath, contentType, "Report.pdf");
+            return null;
         }
 
         // GET: Premium_Works/Details/5
@@ -46,10 +64,21 @@ namespace FirstApplication.Controllers
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Number_Premium_Work,Name_Premium_Work,Description_Premium_Work,Price_Premium_Work")] Premium_Works premium_Works)
+        public ActionResult Create( Premium_Works premium_Works, HttpPostedFileBase Pic)
         {
             if (ModelState.IsValid)
             {
+                string fileName = null;
+                if (Pic != null)
+                {
+                    fileName = Path.GetFileName(Pic.FileName);
+                    string extensionImage = getFileExtension(fileName);
+                    fileName = Guid.NewGuid() + "." + extensionImage;
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/PremiumWorks"), fileName);
+                    //var path = Path.Combine("https://disk.yandex.ru/d/DXlvv0vSsvgswQ?w=1", fileName);
+                    Pic.SaveAs(path);
+                }
+                premium_Works.PicturePath = fileName;
                 db.Premium_Works.Add(premium_Works);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +107,28 @@ namespace FirstApplication.Controllers
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Number_Premium_Work,Name_Premium_Work,Description_Premium_Work,Price_Premium_Work")] Premium_Works premium_Works)
+        public ActionResult Edit( Premium_Works premium_Works, HttpPostedFileBase Pic)
         {
             if (ModelState.IsValid)
             {
+                string fileName = null;
+                if (Pic != null)
+                {
+                    fileName = Path.GetFileName(Pic.FileName);
+                    string extensionImage = getFileExtension(fileName);
+                    fileName = Guid.NewGuid() + "." + extensionImage;
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/PremiumWorks"), fileName);
+                    //var path = Path.Combine("https://disk.yandex.ru/d/DXlvv0vSsvgswQ?w=1", fileName);
+                    Pic.SaveAs(path);
+                    premium_Works.PicturePath = fileName;
+                }
+                else
+                {
+                    using (SmartWorkouts_newEntities bd = new SmartWorkouts_newEntities())
+                    {
+                        premium_Works.PicturePath = bd.Premium_Works.Where(p => p.Number_Premium_Work == premium_Works.Number_Premium_Work).FirstOrDefault().PicturePath;
+                    }
+                }
                 db.Entry(premium_Works).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

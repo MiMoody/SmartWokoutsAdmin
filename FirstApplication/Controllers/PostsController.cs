@@ -63,7 +63,8 @@ namespace FirstApplication.Controllers
                     fileName = Path.GetFileName(Pic.FileName);
                     string extensionImage = getFileExtension(fileName);
                     fileName = Guid.NewGuid() + "." + extensionImage;
-                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/PostImages"), fileName);
+                    //var path = Path.Combine("https://disk.yandex.ru/d/DXlvv0vSsvgswQ?w=1", fileName);
                     Pic.SaveAs(path);
                 }
                 posts.PicturePath = fileName;
@@ -108,7 +109,7 @@ namespace FirstApplication.Controllers
                     fileName = Path.GetFileName(Pic.FileName);
                     string extensionImage = getFileExtension(fileName);
                     fileName = Guid.NewGuid() + "." + extensionImage;
-                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/PostImages"), fileName);
                     Pic.SaveAs(path);
                     posts.PicturePath = fileName;
                 }

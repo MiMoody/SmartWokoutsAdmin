@@ -26,6 +26,7 @@ namespace FirstApplication.Models
         public string Name_Premium_Work { get; set; }
         public string Description_Premium_Work { get; set; }
         public decimal Price_Premium_Work { get; set; }
+        public string PicturePath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exercises> Exercises { get; set; }

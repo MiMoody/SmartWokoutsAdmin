@@ -99,6 +99,16 @@ td {
     line-height: 1.8;
 }
 
+#Photo {
+    display: block;
+    font-family: "Comfortaa", sans-serif;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+#ForPhoto {
+    outline: none;
+}
 .btnEditAndBack {
     display: inline-block;
     color: white;
